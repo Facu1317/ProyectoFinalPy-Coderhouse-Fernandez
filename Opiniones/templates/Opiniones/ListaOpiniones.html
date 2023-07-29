@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Lista de opiniones
+{% endblock titulo %}
+
+{% block contenido %}
+    <div style="margin:50px">
+        <h3>Las lista vigente de opiniones es: </h3>
+
+        <ul>
+
+            {% for opinion in Opiniones %}
+                <li>
+                    {{opinion.pelicula}}, {{ opinion.nota }},{{ opinion.detalle}}
+                </li>
+
+            {% endfor  %}
+            <br>
+            <a style="margin-left: 25px" href="{% url 'CrearOpinion' %}"> Opinar </a>
+            
+            <br><br>
+
+
+        </ul>
+
+    </div>
+{% endblock contenido %}

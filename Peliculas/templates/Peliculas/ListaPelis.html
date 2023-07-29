@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Lista de peliculas
+{% endblock titulo %}
+
+{% block contenido %}
+    <div style="margin:50px">
+        <h3>Las lista vigente de peliculas es: </h3>
+
+        <ul>
+
+            {% for pelicula in Peliculas %}
+                <li>
+                    {{pelicula.nombre}}, {{ pelicula.director }},{{ pelicula.año_estreno}}
+                </li>
+
+            {% endfor  %}
+            <br>
+            <a style="margin-left: 25px" href="{% url 'CrearPelis' %}">Añadir peliculas </a>
+            
+            <br><br>
+
+
+        </ul>
+
+    </div>
+{% endblock contenido %}
