@@ -42,3 +42,28 @@ def crear_pelicula(request):
         context={'formulario': formulario}
     )
     return http_response
+
+def buscar_pelis(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        
+        peliculas = pelicula.objects.filter(nombre__contains=busqueda)
+        
+        contexto = {
+            "Peliculas": peliculas,
+        }
+        http_response = render(
+        request=request,
+        template_name='Peliculas/BuscarPelis.html',
+        context=contexto,
+        )
+        return http_response  
+    
+    
+    http_response = render(
+        request=request,
+        template_name='Peliculas/BuscarPelis.html',
+        
+        )
+    return http_response    

@@ -6,7 +6,8 @@ from Peliculas.views import *
 urlpatterns = [
     
     path("ListaPelis/", ver_lista_peliculas, name="ListaPelis"),
-    path("CrearPelis/",crear_pelicula,name="CrearPelis")
+    path("CrearPelis/",crear_pelicula,name="CrearPelis"),
+    path("BuscarPelis/",buscar_pelis,name="BuscarPelis")
     
 
 ]
