@@ -6,7 +6,7 @@ Nada tan sencillo como ir a "Peliculas" o "Series" y ver la lista que figura. En
 + En caso de no estar la pelicula sobre la que queremos opinar:
 Primero se debe añadir una pelicula o serie a la lista de la pagina:
 Para ello -> click en "Peliculas" (o "Series") --> click en el boton azul "Añadir peliculas"(o "Añadir series")
-+ Una vez hecho esto, podremos opinar sobre la pelicula o serie
++ Una vez hecho esto, podremos opinar sobre la pelicula o serie.
 Para ello -> click en "Opinar" o -> click en en boton azul "Opinar" (si estamos en la lista de opiniones en "Ver opiniones" )
 + Si deseamos buscar una pelicula de la lista, debemos darle click a "Buscar Peliculas". Se recomienda poner un minimo de tres letras para ser mas precisos.
 + Si queremos ver las demas opiniones vigentes damos click en "Ver Opiniones"
