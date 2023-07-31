@@ -7,8 +7,8 @@ class CrearOpinion(forms.Form):
     opciones_serie = serie.objects.all().values_list('id', 'nombre')
 
     CHOICES = [
-        ('Pelicula', [(obj[0], obj[1]) for obj in opciones_pelicula]),
-        ('Serie', [(obj[0], obj[1]) for obj in opciones_serie]),
+        ('Pelicula', [(obj[1], obj[1]) for obj in opciones_pelicula]),
+        ('Serie', [(obj[1], obj[1]) for obj in opciones_serie]),
     ]
     
     pelicula_o_serie = forms.ChoiceField(
