@@ -5,7 +5,7 @@ from .forms import *
 # Create your views here.
 
 def ver_lista_series(request):
-    # Data de pruebas, más adelante la llenaremos con nuestros cursos de verdad
+    
     contexto = {
         "Series": serie.objects.all(),
     }
@@ -27,13 +27,13 @@ def crear_serie(request):
             director = data["director"]
             año_estreno=data["año_estreno"]
             temporadas=data["temporadas"]
-            # creo un curso en memoria RAM
+            # creo una serie en memoria RAM
             Serie = serie(nombre=nombre, director=director, año_estreno=año_estreno,temporadas=temporadas)
-            # Lo guardan en la Base de datos
+            # Se guarda en la Base de datos
             Serie.save()
 
-            # Redirecciono al usuario a la lista de cursos
-            url_exitosa = reverse('ListaSeries')  # estudios/cursos/
+            # Redirecciono al usuario a la lista de series
+            url_exitosa = reverse('ListaSeries')  
             return redirect(url_exitosa)
     else:  # GET
         formulario = SeriesFormulario()

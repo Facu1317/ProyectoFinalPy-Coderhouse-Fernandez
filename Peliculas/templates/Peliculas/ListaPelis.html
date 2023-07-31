@@ -12,13 +12,14 @@ Lista de peliculas
 
             {% for pelicula in Peliculas %}
                 <li>
-                    {{pelicula.nombre}} , dirigida por {{pelicula.director}}, entrenada en {{pelicula.año_estreno}}
+                    {{pelicula.nombre}} , dirigida por {{pelicula.director}}, estrenada en {{pelicula.año_estreno}}
                    
                 </li>
 
             {% endfor  %}
             <br>
             <a style="margin-left: 25px" href="{% url 'CrearPelis' %}">Añadir peliculas </a>
+            <!-- Esta funcionalidad de Buscar Peliculas, fue agregada en caso de que sea una lista muy extensa -->
             <a style="margin-left: 25px" href="{% url 'BuscarPelis' %}">Buscar peliculas </a>
             
             <br><br>

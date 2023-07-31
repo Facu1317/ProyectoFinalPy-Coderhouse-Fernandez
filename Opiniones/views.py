@@ -16,13 +16,13 @@ def crear_opinion(request):
             pelicula_o_serie = data["pelicula_o_serie"]
             nota = data["nota"]
             detalle=data["detalle"]
-            # creo un curso en memoria RAM
+            # creo una opinion en memoria RAM
             Opinion=opinion(pelicula_o_serie=pelicula_o_serie,nota=nota,detalle=detalle)
-            # Lo guardan en la Base de datos
+            # Se guarda en la Base de datos
             Opinion.save()
 
-            # Redirecciono al usuario a la lista de cursos
-            url_exitosa = reverse('ListaOpiniones')  # estudios/cursos/
+            # Redirecciono al usuario a la lista de opiniones
+            url_exitosa = reverse('ListaOpiniones')  
             return redirect(url_exitosa)
     else:  # GET
         formulario = CrearOpinion()
@@ -34,7 +34,6 @@ def crear_opinion(request):
     return http_response
 
 def ver_opiniones(request):
-    # Data de pruebas, más adelante la llenaremos con nuestros cursos de verdad
     contexto = {
         "Opiniones": opinion.objects.all(),
     }

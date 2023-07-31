@@ -5,7 +5,7 @@ from Peliculas.forms import *
 
 # Create your views here.
 def ver_lista_peliculas(request):
-    # Data de pruebas, más adelante la llenaremos con nuestros cursos de verdad
+    
     contexto = {
         "Peliculas": pelicula.objects.all(),
     }
@@ -31,8 +31,8 @@ def crear_pelicula(request):
             # Lo guardan en la Base de datos
             Pelicula.save()
 
-            # Redirecciono al usuario a la lista de cursos
-            url_exitosa = reverse('ListaPelis')  # estudios/cursos/
+            # Redirecciono al usuario a la lista de peliculas
+            url_exitosa = reverse('ListaPelis')  
             return redirect(url_exitosa)
     else:  # GET
         formulario = PelisFormulario()
