@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Lista de series
+{% endblock titulo %}
+
+{% block contenido %}
+    <div style="margin:50px">
+        <h3>Las lista vigente de series es: </h3>
+
+        <ul>
+
+            {% for serie in Series %}
+                <li>
+                    {{serie.nombre}}, dirigida por {{serie.director}}, entrenada en {{serie.año_estreno}}. Duracion: {{serie.temporadas}} temporadas
+                   
+                </li>
+
+            {% endfor  %}
+            <br>
+            <a style="margin-left: 25px" href="{% url 'CrearSeries' %}">Añadir series</a>
+            
+            <br><br>
+
+
+        </ul>
+
+    </div>
+{% endblock contenido %}

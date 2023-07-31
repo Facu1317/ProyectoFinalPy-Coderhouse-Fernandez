@@ -12,7 +12,8 @@ Lista de opiniones
 
             {% for opinion in Opiniones %}
                 <li>
-                    {{opinion.pelicula}}, {{ opinion.nota }},{{ opinion.detalle}}
+                    
+                    <p>Pelicula/Serie:{{opinion.pelicula_o_serie}}<br>Nota: {{ opinion.nota }}<br>Detalle:{{ opinion.detalle}}
                 </li>
 
             {% endfor  %}

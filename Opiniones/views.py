@@ -13,11 +13,11 @@ def crear_opinion(request):
 
         if formulario.is_valid():
             data = formulario.cleaned_data  # es un diccionario
-            pelicula = data["pelicula"]
+            pelicula_o_serie = data["pelicula_o_serie"]
             nota = data["nota"]
             detalle=data["detalle"]
             # creo un curso en memoria RAM
-            Opinion=opinion(pelicula=pelicula,nota=nota,detalle=detalle)
+            Opinion=opinion(pelicula_o_serie=pelicula_o_serie,nota=nota,detalle=detalle)
             # Lo guardan en la Base de datos
             Opinion.save()
 
