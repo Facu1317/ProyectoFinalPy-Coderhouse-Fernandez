@@ -25,6 +25,7 @@ urlpatterns = [
     path('Lista de peliculas',include("Peliculas.urls") ),
     path('Lista de opiniones', include("Opiniones.urls")),
     path('Lista de series',include("Series.urls") ),
+    path('Perfiles', include("Perfiles.urls"))
     
     
 ]

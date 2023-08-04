@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Peliculas',
     'Opiniones',
     'Series',
+    'Perfiles',
 ]
 
 MIDDLEWARE = [

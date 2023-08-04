@@ -2,8 +2,17 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 from .forms import *
-# Create your views here.
+from django.shortcuts import render, redirect
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+from Series.models import *
+from Series.forms import *
+# Create your views here.
+"""
 def ver_lista_series(request):
     
     contexto = {
@@ -43,3 +52,30 @@ def crear_serie(request):
         context={'formulario': formulario}
     )
     return http_response
+"""
+
+class SerieListView( ListView):
+    model = serie
+    template_name = 'Series/ListaSeries.html'
+
+
+class SerieCreateView( CreateView):
+    model = serie
+    fields = ('apellido', 'nombre', 'email', 'dni')
+    success_url = reverse_lazy('ListaSeries')
+
+
+class SerieDetailView( DetailView):
+    model = serie
+    success_url = reverse_lazy('ListaSeries')
+
+
+class SerieUpdateView( UpdateView):
+    model = serie
+    fields = ('apellido', 'nombre', 'email', 'dni')
+    success_url = reverse_lazy('ListaSeries')
+
+
+class SerieDeleteView( DeleteView):
+    model = serie
+    success_url = reverse_lazy('ListaSeries')
