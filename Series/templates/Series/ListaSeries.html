@@ -6,24 +6,40 @@ Lista de series
 
 {% block contenido %}
     <div style="margin:50px">
-        <h3>Las lista vigente de series es: </h3>
+        <h1>Lista de series</h1>
+        <a href="{% url 'CrearSerie' %}">Crear serie</a>
+        <br>
 
-        <ul>
-
-            {% for serie in Series %}
-                <li>
-                    {{serie.nombre}}, dirigida por {{serie.director}}, estrenada en {{serie.año_estreno}}. Duracion: {{serie.temporadas}} temporadas
-                   
-                </li>
-
-            {% endfor  %}
-            <br>
-            <a style="margin-left: 25px" href="{% url 'CrearSeries' %}">Añadir series</a>
+        <table class="table">
+        <tbody>
+            <tr>
+            <th>ID</th>
+            <th>Nombre</th>
             
-            <br><br>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            {% for serie in object_list %}
+            <tr>
+            <td>{{ serie.id }}</td>
+            <td>{{ serie.nombre }}</td>
+            
+            <td>
+                <a href="{% url 'VerSerie' serie.id %}">Detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'EditarSerie' serie.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'EliminarSerie' serie.id %}">Eliminar</a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+       
 
-
-        </ul>
-
+        
     </div>
 {% endblock contenido %}

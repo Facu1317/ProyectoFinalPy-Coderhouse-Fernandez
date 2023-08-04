@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div style="margin:100px">
+    <p>
+    <strong>Nombre: </strong> {{serie.nombre}}
+    </p>
+    <p>
+    <strong>Director: </strong> {{serie.director}}
+    </p>
+    <p>
+    <strong>Año_estreno: </strong> {{serie.año_estreno}}
+    </p>
+    <p>
+    <strong>Temporadas: </strong> {{serie.temporadas}}
+    </p>
+
+    <br>
+    <a href="{% url 'ListaSeries' %}">Volver lista</a><br>
+    <a href="{% url 'EditarSerie' object.id %}">Editar</a>
+</div>
+{% endblock contenido %}

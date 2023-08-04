@@ -61,7 +61,7 @@ class SerieListView( ListView):
 
 class SerieCreateView( CreateView):
     model = serie
-    fields = ('apellido', 'nombre', 'email', 'dni')
+    fields = ('nombre','director','año_estreno','temporadas')
     success_url = reverse_lazy('ListaSeries')
 
 
@@ -72,7 +72,7 @@ class SerieDetailView( DetailView):
 
 class SerieUpdateView( UpdateView):
     model = serie
-    fields = ('apellido', 'nombre', 'email', 'dni')
+    fields = ('nombre','director','año_estreno','temporadas')
     success_url = reverse_lazy('ListaSeries')
 
 
