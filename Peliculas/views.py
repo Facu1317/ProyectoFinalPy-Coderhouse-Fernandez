@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from Peliculas.models import *
 from Peliculas.forms import *
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # Create your views here.
 def ver_lista_peliculas(request):
     
@@ -16,6 +18,7 @@ def ver_lista_peliculas(request):
     )
     return http_response
 
+@login_required
 def crear_pelicula(request):
     if request.method == "POST":
         # Creo un objeto formulario con la data que envio el usuario
@@ -43,6 +46,9 @@ def crear_pelicula(request):
     )
     return http_response
 
+
+
+@login_required
 def buscar_pelis(request):
     if request.method == "POST":
         data = request.POST
@@ -67,3 +73,49 @@ def buscar_pelis(request):
         
         )
     return http_response    
+
+
+@login_required
+def eliminar_pelis(request, id):
+    # obtienes el curso de la base de datos
+    Pelicula = pelicula.objects.get(id=id)
+    if request.method == "POST":
+        # borra el curso de la base de datos
+        Pelicula.delete()
+        # redireccionamos a la URL exitosa
+        url_exitosa = reverse('ListaPelis')
+        return redirect(url_exitosa)
+
+
+@login_required
+def editar_pelis(request,id):
+    Pelicula = pelicula.objects.get(id=id)
+    if request.method == "POST":
+        formulario = PelisFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            Pelicula.nombre = data['nombre']
+            Pelicula.director = data['director']
+            Pelicula.año_estreno = data['año_estreno']
+            
+            Pelicula.save()
+
+            url_exitosa = reverse('ListaPelis')
+            return redirect(url_exitosa)
+    else:  # GET
+        inicial = {
+            'nombre': pelicula.nombre,
+            'director': pelicula.director,
+            'año_estreno':pelicula.año_estreno,
+        }
+        formulario = PelisFormulario(initial=inicial)
+    return render(
+        request=request,
+        template_name='Peliculas/CrearPelis.html',
+        context={'formulario': formulario},
+    )
+
+class PeliculaDetailView(LoginRequiredMixin, DetailView):
+    model = pelicula
+    success_url = reverse_lazy('ListaPelis')

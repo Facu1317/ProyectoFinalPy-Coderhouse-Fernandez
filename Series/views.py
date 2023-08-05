@@ -59,23 +59,23 @@ class SerieListView( ListView):
     template_name = 'Series/ListaSeries.html'
 
 
-class SerieCreateView( CreateView):
+class SerieCreateView( CreateView,LoginRequiredMixin):
     model = serie
     fields = ('nombre','director','año_estreno','temporadas')
     success_url = reverse_lazy('ListaSeries')
 
 
-class SerieDetailView( DetailView):
+class SerieDetailView( DetailView,LoginRequiredMixin):
     model = serie
     success_url = reverse_lazy('ListaSeries')
 
 
-class SerieUpdateView( UpdateView):
+class SerieUpdateView( UpdateView,LoginRequiredMixin):
     model = serie
     fields = ('nombre','director','año_estreno','temporadas')
     success_url = reverse_lazy('ListaSeries')
 
 
-class SerieDeleteView( DeleteView):
+class SerieDeleteView( DeleteView,LoginRequiredMixin):
     model = serie
     success_url = reverse_lazy('ListaSeries')

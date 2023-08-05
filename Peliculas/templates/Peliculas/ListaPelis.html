@@ -5,27 +5,42 @@ Lista de peliculas
 {% endblock titulo %}
 
 {% block contenido %}
-    <div style="margin:50px">
-        <h3>Las lista vigente de peliculas es: </h3>
+<div style="margin:50px">
+    <h1>Lista de peliculas</h1>
+    <a href="{% url 'CrearPelis' %}">Crear peliculas</a>
+    <br>
 
-        <ul>
-
-            {% for pelicula in Peliculas %}
-                <li>
-                    {{pelicula.nombre}} , dirigida por {{pelicula.director}}, estrenada en {{pelicula.año_estreno}}
-                   
-                </li>
-
-            {% endfor  %}
-            <br>
-            <a style="margin-left: 25px" href="{% url 'CrearPelis' %}">Añadir peliculas </a>
-            <!-- Esta funcionalidad de Buscar Peliculas, fue agregada en caso de que sea una lista muy extensa -->
-            <a style="margin-left: 25px" href="{% url 'BuscarPelis' %}">Buscar peliculas </a>
+    <table class="table">
+        <tbody>
+            <tr>
+            <th>ID</th>
+            <th>Nombre</th>
             
-            <br><br>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            {% for pelicula in Peliculas %}
+            <tr>
+            <td>{{ pelicula.id }}</td>
+            <td>{{ pelicula.nombre }}</td>
+            
+            <td>
+                <a href="{% url 'VerPelis' pelicula.id %}">Detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'EditarPelis' pelicula.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'EliminarPelis' pelicula.id %}">Eliminar</a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   
 
-
-        </ul>
-
-    </div>
+    
+</div>
+    
 {% endblock contenido %}
