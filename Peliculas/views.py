@@ -105,9 +105,9 @@ def editar_pelis(request,id):
             return redirect(url_exitosa)
     else:  # GET
         inicial = {
-            'nombre': pelicula.nombre,
-            'director': pelicula.director,
-            'año_estreno':pelicula.año_estreno,
+            'nombre': Pelicula.nombre,
+            'director': Pelicula.director,
+            'año_estreno':Pelicula.año_estreno,
         }
         formulario = PelisFormulario(initial=inicial)
     return render(
@@ -116,6 +116,6 @@ def editar_pelis(request,id):
         context={'formulario': formulario},
     )
 
-class PeliculaDetailView(LoginRequiredMixin, DetailView):
+class PeliculaDetailView(DetailView,LoginRequiredMixin):
     model = pelicula
     success_url = reverse_lazy('ListaPelis')

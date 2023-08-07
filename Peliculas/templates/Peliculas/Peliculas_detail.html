@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}
+DetallePelis
+{% endblock titulo %}
+
+{% block contenido %}
+<div style="margin:100px">
+    <p>
+    <strong>Nombre: </strong> {{serie.nombre}}
+    </p>
+    <p>
+    <strong>Director: </strong> {{serie.director}}
+    </p>
+    <p>
+    <strong>Año_estreno: </strong> {{serie.año_estreno}}
+    </p>
+    
+
+    <br>
+    <a href="{% url 'ListaPelis' %}">Volver lista</a><br>
+    <a href="{% url 'EditarPelis' object.id %}">Editar</a>
+</div>
+{% endblock contenido %}
