@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from Opiniones.models import opinion
 from Opiniones.forms import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-
+@login_required
 def crear_opinion(request):
     if request.method == "POST":
         # Creo un objeto formulario con la data que envio el usuario
