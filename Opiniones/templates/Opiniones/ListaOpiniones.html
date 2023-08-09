@@ -5,25 +5,43 @@ Lista de opiniones
 {% endblock titulo %}
 
 {% block contenido %}
+    
+        
     <div style="margin:50px">
         <h3>Las lista vigente de opiniones es: </h3>
+        <a style="margin-left: 25px" href="{% url 'CrearOpinion' %}"> Opinar </a>
+        <br>
 
-        <ul>
-
-            {% for opinion in Opiniones %}
-                <li>
-                    
-                    <p>Pelicula/Serie:{{opinion.pelicula_o_serie}}<br>Nota: {{ opinion.nota }}<br>Detalle:{{ opinion.detalle}}
-                </li>
-
-            {% endfor  %}
-            <br>
-            <a style="margin-left: 25px" href="{% url 'CrearOpinion' %}"> Opinar </a>
+        <table class="table">
+        <tbody>
+            <tr>
+            <th>Pelicula/Serie</th>
+            <th>Nota</th>
+            <th>Detalle</th>
+            <th>Creador</th>
             
-            <br><br>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            {% for opinion in Opiniones %}
+            <tr>
+            
+            <td>{{ opinion.pelicula_o_serie }}</td>
+            <td>{{ opinion.nota }}</td>
+            <td>{{ opinion.detalle }}</td>
+            <td>{{ opinion.creador }}</td>
+            
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        
 
-
-        </ul>
-
+        
     </div>
+        
+
+    
 {% endblock contenido %}
