@@ -2,7 +2,7 @@
 
 # Create your views here.
 from Perfiles.forms import AvatarFormulario
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
@@ -10,7 +10,7 @@ from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
-
+from django.views.generic.detail import DetailView
 
 from Perfiles.forms import UserRegisterForm, UserUpdateForm
 
@@ -57,6 +57,7 @@ def login_view(request):
         context={'form': form},
     )
 
+
 class CustomLogoutView(LogoutView):
    template_name = 'perfiles/logout.html'
 
@@ -69,6 +70,7 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
    def get_object(self, queryset=None):
        return self.request.user
    
+
 
 def agregar_avatar(request):
     if request.method == "POST":
@@ -88,3 +90,16 @@ def agregar_avatar(request):
       template_name="Perfiles/AgregarAvatarForm.html",
       context={'form': formulario},
     ) 
+
+#def detalle_usuario(request, id):
+#    usuario = get_object_or_404(User, id=id)
+#    return render(
+#        request=request,
+#        template_name='DetallePerfil.html',
+#        context={'usuario': usuario}
+#        )
+
+class UsuarioDetailView(DetailView):
+    model = User  # Especifica el modelo del cual deseas mostrar los detalles
+    template_name = 'VerPerfil.html'  # Plantilla para mostrar los detalles
+    context_object_name = 'usuario'  # Nombre del objeto en el contexto

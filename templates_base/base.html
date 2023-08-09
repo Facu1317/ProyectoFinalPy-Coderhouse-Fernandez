@@ -28,14 +28,17 @@
                 </button>
                 <ul class="dropdown-menu" style="margin-left: 8%" aria-labelledby="dropdownMenuButton1">
                     <li>
-                        <a class="dropdown-item"  href="{% url 'EditarPerfil' %}">Editar mis datos</a>
+                        <a class="dropdown-item"  href="{% url 'VerPerfil' object.pk %}">Ver Perfil</a>
                     </li>
                     <li>
                         <a class="dropdown-item"  href="{% url 'AgregarAvatar' %}">Agregar Avatar</a>
                     </li>
+                    
+                    
                     <li>
                         <a class="dropdown-item"  href="{% url 'Logout' %}"><strong>Cerrar Sesión</strong></a>
                     </li>
+                    
                     
                 </ul>
      
@@ -51,7 +54,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'CrearOpinion' %}">Opinar</a>
                         <li class="nav-item"><a class="nav-link" href="{% url 'BuscarPelis' %}">Buscar peliculas</a>
                         <li class="nav-item"><a class="nav-link" href="{% url 'ListaPelis' %}">Peliculas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'ListaSeries' %}">Series</a></li>
+                        
                         <li class="nav-item"><a class="nav-link" href="{% url 'ListaOpiniones' %}">Ver opiniones</a></li>
                     </ul>
                 </div>
