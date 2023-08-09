@@ -17,6 +17,7 @@ def crear_opinion(request):
             pelicula_o_serie = data["pelicula_o_serie"]
             nota = data["nota"]
             detalle=data["detalle"]
+            creador=request.user
             
             # creo una opinion en memoria RAM
             Opinion=opinion(pelicula_o_serie=pelicula_o_serie,nota=nota,detalle=detalle,creador=creador)
