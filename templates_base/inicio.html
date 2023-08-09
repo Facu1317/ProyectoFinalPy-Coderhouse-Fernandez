@@ -8,8 +8,20 @@ Inicio
 {% block contenido %}
 <div class="container">
     <div class="text-center mt-5">
+        {% if user.is_authenticated %}
+        <h1>Bienvenido a MovieOpin {{user.username}}</h1>
+        <img src="{{ user.avatar.imagen.url }}"style="max-width: 300px;" />
+        
+        <p class="lead">Una web donde podras opinar sobre tus peliculas favoritas</p>       
+                
+     
+     
+        {% else %}
         <h1>Bienvenidos a MovieOpin</h1>
+        
         <p class="lead">Una web donde podras opinar sobre tus peliculas favoritas</p>
+        {% endif %}
+    
         
         
     </div>

@@ -1,6 +1,7 @@
 
 
 # Create your views here.
+from Perfiles.forms import AvatarFormulario
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
@@ -10,7 +11,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 
-from Perfiles.forms import UserRegisterForm
+
+from Perfiles.forms import UserRegisterForm, UserUpdateForm
 
 
 def registro(request):
@@ -57,3 +59,32 @@ def login_view(request):
 
 class CustomLogoutView(LogoutView):
    template_name = 'perfiles/logout.html'
+
+
+class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
+   form_class = UserUpdateForm
+   success_url = reverse_lazy('Inicio')
+   template_name = 'Perfiles/EditarPerfilForm.html'
+
+   def get_object(self, queryset=None):
+       return self.request.user
+   
+
+def agregar_avatar(request):
+    if request.method == "POST":
+        #post solo texto, files archivos
+        formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+
+        if formulario.is_valid():
+            avatar = formulario.save()
+            avatar.user = request.user
+            avatar.save()
+            url_exitosa = reverse('Inicio')
+            return redirect(url_exitosa)
+    else:  # GET
+        formulario = AvatarFormulario()
+    return render(
+      request=request,
+      template_name="Perfiles/AgregarAvatarForm.html",
+      context={'form': formulario},
+    ) 

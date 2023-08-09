@@ -79,12 +79,12 @@ def buscar_pelis(request):
 def eliminar_pelis(request, id):
     # obtienes el curso de la base de datos
     Pelicula = pelicula.objects.get(id=id)
-    if request.method == "POST":
+
         # borra el curso de la base de datos
-        Pelicula.delete()
+    Pelicula.delete()
         # redireccionamos a la URL exitosa
-        url_exitosa = reverse('ListaPelis')
-        return redirect(url_exitosa)
+    url_exitosa = reverse('ListaPelis')
+    return redirect(url_exitosa)
 
 
 @login_required
