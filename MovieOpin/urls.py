@@ -23,7 +23,7 @@ from MovieOpin.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',inicio,name="Inicio"),
+    path('',inicio,name="Home"),
     path('Lista de peliculas',include("Peliculas.urls") ),
     path('Lista de opiniones', include("Opiniones.urls")),
     path('Perfiles', include("Perfiles.urls"))
