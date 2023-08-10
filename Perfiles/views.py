@@ -101,5 +101,5 @@ def agregar_avatar(request):
 
 class UsuarioDetailView(DetailView):
     model = User  # Especifica el modelo del cual deseas mostrar los detalles
-    template_name = 'VerPerfil.html'  # Plantilla para mostrar los detalles
+    template_name = 'Perfiles/VerPerfil.html'  # Plantilla para mostrar los detalles
     context_object_name = 'usuario'  # Nombre del objeto en el contexto
