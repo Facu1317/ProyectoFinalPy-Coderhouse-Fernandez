@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from Opiniones.models import opinion
 from Opiniones.forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -14,13 +16,14 @@ def crear_opinion(request):
 
         if formulario.is_valid():
             data = formulario.cleaned_data  # es un diccionario
-            pelicula_o_serie = data["pelicula_o_serie"]
+            pelicula = data["pelicula"]
             nota = data["nota"]
+            mini_opinion=data["mini_opinion"]
             detalle=data["detalle"]
             creador=request.user
             
             # creo una opinion en memoria RAM
-            Opinion=opinion(pelicula_o_serie=pelicula_o_serie,nota=nota,detalle=detalle,creador=creador)
+            Opinion=opinion(pelicula=pelicula,nota=nota,mini_opinion=mini_opinion,detalle=detalle,creador=creador)
             # Se guarda en la Base de datos
             Opinion.save()
 
@@ -49,4 +52,21 @@ def ver_opiniones(request):
 
 
 
-    
+class OpinionDetailView(DetailView,LoginRequiredMixin):
+    model = opinion
+    success_url = reverse_lazy('ListaOpiniones')    
+
+
+
+
+class OpinionUpdateView( PermissionRequiredMixin,UpdateView,LoginRequiredMixin):
+    model = opinion
+    permission_required = "opinion.change_opinion"
+    fields = ('pelicula','mini_opinion','nota','detalle')
+    success_url = reverse_lazy('ListaOpiniones')
+
+
+class OpinionDeleteView(PermissionRequiredMixin, DeleteView,LoginRequiredMixin,):
+    model = opinion
+    permission_required = "opinion.delete_opinion"
+    success_url = reverse_lazy('ListaOpiniones')

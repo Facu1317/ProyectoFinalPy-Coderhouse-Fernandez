@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Detalle de opinion
+{% endblock titulo %}
+
+{% block contenido %}
+<div style="margin:100px">
+    <p>
+    <strong>Pelicula: </strong> {{opinion.pelicula}}
+    </p>
+    <p>
+    <strong>Mini_opinion: </strong> {{opinion.mini_opinion}}
+    </p>
+    <p>
+    <strong>Nota: </strong> {{opinion.nota}}
+    </p>
+    <p>
+    <strong>Detalle: </strong> {{opinion.detalle}}
+    </p>
+    <p>
+    <strong>Fecha: </strong> {{opinion.fecha}}
+    </p>
+    
+
+    <br>
+    <a href="{% url 'ListaOpiniones' %}">Volver lista</a><br>
+    
+</div>
+{% endblock contenido %}

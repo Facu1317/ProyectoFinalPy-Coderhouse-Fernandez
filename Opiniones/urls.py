@@ -6,7 +6,10 @@ from Opiniones.views import *
 urlpatterns = [
     
     path("ListaOpiniones/", ver_opiniones, name="ListaOpiniones"),
-    path("CrearOpinion/",crear_opinion,name="CrearOpinion")
+    path("CrearOpinion/",crear_opinion,name="CrearOpinion"),
+    path("DetalleOpinion/<int:pk>/",OpinionDetailView.as_view(),name="DetalleOpinion"),
+    path("EditarOpinion/<int:pk>/",OpinionUpdateView.as_view(),name="EditarOpinion"),
+    path("EliminarOpinion/<int:pk>/",OpinionDeleteView.as_view(),name="EliminarOpinion"),
     
 
 ]

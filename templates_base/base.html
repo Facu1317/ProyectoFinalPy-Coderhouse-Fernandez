@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,7 +23,7 @@
                 
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <div style="display: inline-flex;">
-                        <img src="{{ user.avatar.imagen.url }}" style="width: 30px; height: 30px; margin-right: 10px"; alt="Avatar" />
+                        <img src="{{ user.avatar.imagen.url }}" style="width: 40px; height: 45px; margin-right: 10px"; alt="Avatar" />
                         <span>{{ user.username }}</span>
                     </div>
                 </button>
@@ -49,9 +50,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'CrearOpinion' %}">Opinar</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'BuscarPelis' %}">Buscar peliculas</a>
                         <li class="nav-item"><a class="nav-link" href="{% url 'ListaPelis' %}">Peliculas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'ListaSeries' %}">Series</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'ListaOpiniones' %}">Ver opiniones</a></li>
                     </ul>
                 </div>
