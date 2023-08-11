@@ -9,7 +9,14 @@ Lista de opiniones
     
         
     <div style="margin:50px">
-        <p>Para ver el detalle de cada opinion debes clickear cada articulo </p>
+        
+        {%if Opiniones|length < 1%}
+        <p style="text-align: center">No hay entradas aun<p>
+        <div style="text-align: center">
+            <a  href="{% url 'CrearOpinion' %}"> Opinar </a>
+        </div> 
+         
+        {%else%}
         <h3>Las lista vigente de opiniones es: </h3>
         
         <br>
@@ -31,12 +38,15 @@ Lista de opiniones
                             <a href="#!">{{opinion.creador}}</a>
                             on {{opinion.fecha}}
                         </p>
-                        {% if perms.opinion.change_movie %}
-                        <a href="{% url 'EditarOpinion' opinion.id %}" class="btn btn-primary">Editar</a>
+
+                        
+                        {% if request.user == opinion.creador %}
+                        <a href="{% url 'EditarOpinion' opinion.id %}">Editar</a>
+                        <a href="{% url 'EliminarOpinion' opinion.id %}">Eliminar</a>
                         {% endif %}
-                        {% if perms.opinion.delete_movie %}
-                        <a href="{% url 'EliminarOpinion' opinion.id %}" class="btn btn-primary">Borrar</a>
-                        {% endif %}
+                        
+                        
+                        
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
@@ -44,6 +54,7 @@ Lista de opiniones
                     <!-- Post preview-->
                     
                     <a style="margin-left: 25px" href="{% url 'CrearOpinion' %}"> Opinar </a> 
+                    {%endif%}
     </div>
     
         

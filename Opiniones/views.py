@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from Opiniones.models import opinion
 from Opiniones.forms import *
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # Create your views here.
 
@@ -52,21 +52,29 @@ def ver_opiniones(request):
 
 
 
-class OpinionDetailView(DetailView,LoginRequiredMixin):
+class OpinionDetailView(DetailView):
     model = opinion
     success_url = reverse_lazy('ListaOpiniones')    
 
 
 
 
-class OpinionUpdateView( PermissionRequiredMixin,UpdateView,LoginRequiredMixin):
+class OpinionUpdateView( UpdateView,LoginRequiredMixin,UserPassesTestMixin):
     model = opinion
-    permission_required = "opinion.change_opinion"
+    
     fields = ('pelicula','mini_opinion','nota','detalle')
     success_url = reverse_lazy('ListaOpiniones')
 
+    def test_func(self):
+        Opinion = self.get_object()
+        return self.request.user == Opinion.usuario
 
-class OpinionDeleteView(PermissionRequiredMixin, DeleteView,LoginRequiredMixin,):
+
+class OpinionDeleteView(DeleteView,LoginRequiredMixin,UserPassesTestMixin):
     model = opinion
-    permission_required = "opinion.delete_opinion"
+    
     success_url = reverse_lazy('ListaOpiniones')
+
+    def test_func(self):
+        Opinion = self.get_object()
+        return self.request.user == Opinion.usuario

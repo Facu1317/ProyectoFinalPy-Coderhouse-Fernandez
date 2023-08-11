@@ -20,3 +20,10 @@ Para ello -> click en "Opinar" o -> click en en boton azul "Opinar" (si estamos 
 + El template base y el template inicio estan en la carpeta "templates_base".
 + Origen del template base: https://startbootstrap.com/template/bare
 
+# Superusuario de pruebas
+username:Facu1317
+contraseña:campito
+
+# Usuarios normales
+username:mariaperez
+contraseña:sup3r123!

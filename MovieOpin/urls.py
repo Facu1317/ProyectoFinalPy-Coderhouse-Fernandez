@@ -24,8 +24,9 @@ from MovieOpin.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',inicio,name="Inicio"),
+    path('about/',about,name="About"),
     path('Lista de peliculas',include("Peliculas.urls") ),
-    path('Lista de opiniones', include("Opiniones.urls")),
+    path('pages/', include("Opiniones.urls")),
     path('Lista de series',include("Series.urls") ),
     path('Perfiles', include("Perfiles.urls"))
     
