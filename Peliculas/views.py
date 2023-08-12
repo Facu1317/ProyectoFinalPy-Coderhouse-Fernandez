@@ -29,8 +29,9 @@ def crear_pelicula(request):
             nombre = data["nombre"]
             director = data["director"]
             año_estreno=data["año_estreno"]
+            creador=request.user
             # creo un curso en memoria RAM
-            Pelicula = pelicula(nombre=nombre, director=director, año_estreno=año_estreno)
+            Pelicula = pelicula(nombre=nombre, director=director, año_estreno=año_estreno,creador=creador)
             # Lo guardan en la Base de datos
             Pelicula.save()
 
@@ -47,7 +48,7 @@ def crear_pelicula(request):
     return http_response
 
 
-
+"""
 @login_required
 def buscar_pelis(request):
     if request.method == "POST":
@@ -116,6 +117,9 @@ def editar_pelis(request,id):
         context={'formulario': formulario},
     )
 
+    
+
+"""       
 class PeliculaDetailView(DetailView):
     model = pelicula
     success_url = reverse_lazy('ListaPelis')
