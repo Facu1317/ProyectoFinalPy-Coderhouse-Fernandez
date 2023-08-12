@@ -24,17 +24,24 @@ Lista de peliculas
             <tr>
             <td>{{ pelicula.id }}</td>
             <td>{{ pelicula.nombre }}</td>
+            <td>La pelicula fue agregada por {{ pelicula.creador }}</td>
+
             
             <td>
                 <a href="{% url 'VerPelis' pelicula.id %}">Detalle</a>
             </td>
+            {% if request.user == pelicula.creador %}
+                        
+                        
             <td>
                 <a href="{% url 'EditarPelis' pelicula.id %}">Editar</a>
             </td>
             <td>
                 <a href="{% url 'EliminarPelis' pelicula.id %}">Eliminar</a>
             </td>
+
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

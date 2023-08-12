@@ -3,7 +3,7 @@ from django.urls import reverse,reverse_lazy
 from Peliculas.models import *
 from Peliculas.forms import *
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # Create your views here.
 def ver_lista_peliculas(request):
@@ -116,6 +116,26 @@ def editar_pelis(request,id):
         context={'formulario': formulario},
     )
 
-class PeliculaDetailView(DetailView,LoginRequiredMixin):
+class PeliculaDetailView(DetailView):
     model = pelicula
     success_url = reverse_lazy('ListaPelis')
+
+class PeliculaUpdateView( UpdateView,LoginRequiredMixin,UserPassesTestMixin):
+    model = pelicula
+    
+    fields = ('pelicula','mini_opinion','nota','detalle')
+    success_url = reverse_lazy('ListaOpiniones')
+
+    def test_func(self):
+        Pelicula = self.get_object()
+        return self.request.user == Pelicula.usuario
+
+
+class PeliculaDeleteView(DeleteView,LoginRequiredMixin,UserPassesTestMixin):
+    model = pelicula
+    
+    success_url = reverse_lazy('ListaPelis')
+
+    def test_func(self):
+        Pelicula = self.get_object()
+        return self.request.user == Pelicula.usuario
