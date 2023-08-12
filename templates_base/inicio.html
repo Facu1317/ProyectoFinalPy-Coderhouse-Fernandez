@@ -10,7 +10,11 @@ Inicio
     <div class="text-center mt-5">
         {% if user.is_authenticated %}
         <h1>Bienvenido a MovieOpin {{user.username}}</h1>
-        <img src="{{ user.avatar.imagen.url }}"style="max-width: 300px;" />
+        {% if user.avatar.imagen %}
+            <img src="{{ user.avatar.imagen.url }}" style="width: 200px; height: 230px; margin-right: 10px"
+                        alt="Avatar" />
+        {% endif %}
+        
         
         <p class="lead">Una web donde podras opinar sobre tus peliculas favoritas</p>       
                 

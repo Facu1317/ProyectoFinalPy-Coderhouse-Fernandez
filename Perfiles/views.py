@@ -9,7 +9,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView,DetailView,DeleteView
+from .models import Avatar
 
 
 from Perfiles.forms import UserRegisterForm, UserUpdateForm
@@ -88,3 +89,12 @@ def agregar_avatar(request):
       template_name="Perfiles/AgregarAvatarForm.html",
       context={'form': formulario},
     ) 
+
+class UsuarioDetailView(DetailView):
+    model = User  # Especifica el modelo del cual deseas mostrar los detalles
+    template_name = 'Perfiles/VerPerfil.html'  # Plantilla para mostrar los detalles
+    context_object_name = 'usuario'  # Nombre del objeto en el contexto
+
+class AvatarDeleteView(DeleteView):
+    model = Avatar
+    success_url = reverse_lazy('Inicio')

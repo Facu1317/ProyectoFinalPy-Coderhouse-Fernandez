@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div style="margin:50px">
+    <h1>Detalle de Usuario</h1>
+    <p>Nombre de usuario: {{ usuario.username }}</p>
+    <p>Apellido: {{ usuario.last_name }}</p>
+    <p>Nombre: {{ usuario.first_name }}</p>
+    <p>Correo electrónico: {{ usuario.email }}</p>
+
+    
+    <a  href="{% url 'EditarPerfil' %}">Editar mis datos</a>
+    
+</div>
+{% endblock contenido %}

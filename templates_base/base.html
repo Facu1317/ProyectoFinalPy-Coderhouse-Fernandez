@@ -23,16 +23,26 @@
                 
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <div style="display: inline-flex;">
-                        <img src="{{ user.avatar.imagen.url }}" style="width: 40px; height: 45px; margin-right: 10px"; alt="Avatar" />
+                        {% if user.avatar.imagen %}
+                        <img src="{{ user.avatar.imagen.url }}" style="width: 40px; height: 45px; margin-right: 10px"
+                        alt="Avatar" />
                         <span>{{ user.username }}</span>
+                        {% else %}
+                        <span>{{ user.username }}</span>
+                        {% endif %}
+                    }   
                     </div>
                 </button>
+                
                 <ul class="dropdown-menu" style="margin-left: 8%" aria-labelledby="dropdownMenuButton1">
                     <li>
-                        <a class="dropdown-item"  href="{% url 'EditarPerfil' %}">Editar mis datos</a>
+                        <a class="dropdown-item"  href="{% url 'VerPerfil' user.id %}">Ver perfil</a>
                     </li>
                     <li>
                         <a class="dropdown-item"  href="{% url 'AgregarAvatar' %}">Agregar Avatar</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  href="{% url 'EliminarAvatar' user.id %}">Eliminar Avatar</a>
                     </li>
                     <li>
                         <a class="dropdown-item"  href="{% url 'Logout' %}"><strong>Cerrar Sesión</strong></a>
