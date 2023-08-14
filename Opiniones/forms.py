@@ -13,5 +13,5 @@ class CrearOpinion(forms.Form):
         label="MiniOpinion (una frase sencilla y corta que resume tu opinion) ",required=True,max_length=64, min_length=30)
     detalle = forms.CharField(
         label="Detalle (aqui puedes explayarte mas, poner que te gusto y que no, que se puede mejorar, detalles de actuaciones, efectos,etc) ",
-                              required=True, max_length=256,min_length=50)
+                              required=True, max_length=1024,min_length=64)
     

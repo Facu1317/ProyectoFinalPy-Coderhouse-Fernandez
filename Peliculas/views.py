@@ -127,8 +127,8 @@ class PeliculaDetailView(DetailView):
 class PeliculaUpdateView( UpdateView,LoginRequiredMixin,UserPassesTestMixin):
     model = pelicula
     
-    fields = ('pelicula','mini_opinion','nota','detalle')
-    success_url = reverse_lazy('ListaOpiniones')
+    fields = ('nombre','director','año_estreno')
+    success_url = reverse_lazy('ListaPelis')
 
     def test_func(self):
         Pelicula = self.get_object()

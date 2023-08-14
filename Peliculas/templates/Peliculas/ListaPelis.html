@@ -6,49 +6,48 @@ Lista de peliculas
 
 {% block contenido %}
 <div style="margin:50px">
+    {%if Peliculas|length < 1%}
+        <p style="text-align: center">No hay entradas aun<p>
+    <div style="text-align: center">
+        <a  href="{% url 'CrearPelis' %}"> CrearPelicula </a>
+    </div>   
+    {%else%}  
     <h1>Lista de peliculas</h1>
     <a href="{% url 'CrearPelis' %}">Crear peliculas</a>
     <br>
 
     <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalle</th>
+                {% if request.user.is_authenticated %}
+                    <th>Acciones</th>
+                {% endif %}
+                <th>Agregada por</th>
+            </tr>
+        </thead>
         <tbody>
-            <tr>
-            
-            <th>Nombre</th>
-            
-            <th>Detalle</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            </tr>
             {% for pelicula in Peliculas %}
-            <tr>
-            
-            <td>{{ pelicula.nombre }}</td>
-            
-
-            
-            <td>
-                <a href="{% url 'VerPelis' pelicula.id %}">Detalle</a>
-            </td>
-            {% if request.user == pelicula.creador %}
-                        
-                        
-            <td>
-                <a href="{% url 'EditarPelis' pelicula.id %}">Editar</a>
-            </td>
-            <td>
-                <a href="{% url 'EliminarPelis' pelicula.id %}">Eliminar</a>
-            </td>
-
-
-            </tr>
-            {% endif %}
-            <td>Agregada por {{ pelicula.creador }}</td>
+                <tr>
+                    <td>{{ pelicula.nombre }}</td>
+                    <td>
+                        <a href="{% url 'VerPelis' pelicula.id %}">Detalle</a>
+                    </td>
+                    {% if request.user == pelicula.creador %}
+                        <td>
+                            <a href="{% url 'EditarPelis' pelicula.id %}">Editar</a> |
+                            <a href="{% url 'EliminarPelis' pelicula.id %}">Eliminar</a>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>Agregada por {{ pelicula.creador }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
-   
+   {% endif %}
 
     
 </div>

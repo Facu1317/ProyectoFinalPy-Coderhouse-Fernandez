@@ -9,7 +9,7 @@ class opinion(models.Model):
     pelicula=models.CharField(max_length=32)
     nota=models.IntegerField()
     mini_opinion=models.CharField(max_length=64)
-    detalle=models.CharField(max_length=256)
+    detalle=models.CharField(max_length=1024)
     creador=models.ForeignKey(User, on_delete=models.CASCADE, related_name="CursosCreados")
     fecha=models.DateTimeField(auto_now=True)
 

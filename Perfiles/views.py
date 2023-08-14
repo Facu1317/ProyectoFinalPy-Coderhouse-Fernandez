@@ -72,10 +72,17 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
    
 
 def agregar_avatar(request):
+     # Aquí me llega toda la info del formulario html
+    try:
+        avatar = Avatar.objects.get(user=request.user)
+        avatar.imagen.delete()  # Eliminar la imagen asociada al avatar
+        avatar.delete()  # Eliminar el avatar
+    except Avatar.DoesNotExist:
+            pass 
     if request.method == "POST":
         #post solo texto, files archivos
-        formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
-
+         # No hay avatar existente, simplemente continúa
+        formulario = AvatarFormulario(request.POST, request.FILES)
         if formulario.is_valid():
             avatar = formulario.save()
             avatar.user = request.user
@@ -89,6 +96,7 @@ def agregar_avatar(request):
       template_name="Perfiles/AgregarAvatarForm.html",
       context={'form': formulario},
     ) 
+    
 
 class UsuarioDetailView(DetailView):
     model = User  # Especifica el modelo del cual deseas mostrar los detalles
@@ -98,3 +106,6 @@ class UsuarioDetailView(DetailView):
 class AvatarDeleteView(DeleteView):
     model = Avatar
     success_url = reverse_lazy('Inicio')
+    def get_object(self, queryset=None):
+        # Obtener el avatar del usuario actual
+        return self.request.user.avatar
