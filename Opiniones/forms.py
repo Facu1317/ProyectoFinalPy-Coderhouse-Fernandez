@@ -1,7 +1,7 @@
 from django import forms
 from jinja2 import ChoiceLoader
 from Peliculas.models import pelicula
-from Series.models import serie
+
 
 
 class CrearOpinion(forms.Form):
