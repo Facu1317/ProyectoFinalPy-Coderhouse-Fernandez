@@ -9,6 +9,6 @@ urlpatterns = [
     path('logout/', CustomLogoutView.as_view(), name="Logout"),
     path('EditarPerfil/',MiPerfilUpdateView.as_view(), name="EditarPerfil"),
     path("AgregarAvatar/",agregar_avatar, name="AgregarAvatar"),
-    path('Profile/<int:pk>/', UsuarioDetailView.as_view(), name='VerPerfil'),
+    path('profile/<int:pk>/', UsuarioDetailView.as_view(), name='VerPerfil'),
     path("EliminarAvatar/<int:pk>/",AvatarDeleteView.as_view(),name="EliminarAvatar"),
 ]

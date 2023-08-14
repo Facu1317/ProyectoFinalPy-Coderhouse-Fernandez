@@ -5,9 +5,9 @@ from Opiniones.views import *
 #Urls especificas de la app
 urlpatterns = [
     
-    path("ListaOpiniones/", ver_opiniones, name="ListaOpiniones"),
+    path("", ver_opiniones, name="ListaOpiniones"),
     path("CrearOpinion/",crear_opinion,name="CrearOpinion"),
-    path("DetalleOpinion/<int:pk>/",OpinionDetailView.as_view(),name="DetalleOpinion"),
+    path("<int:pk>/",OpinionDetailView.as_view(),name="DetalleOpinion"),
     path("EditarOpinion/<int:pk>/",OpinionUpdateView.as_view(),name="EditarOpinion"),
     path("EliminarOpinion/<int:pk>/",OpinionDeleteView.as_view(),name="EliminarOpinion"),
     
