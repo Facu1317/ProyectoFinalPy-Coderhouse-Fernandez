@@ -28,7 +28,9 @@ Detalle de opinion
 
     <br>
     <a href="{% url 'ListaOpiniones' %}">Volver lista</a><br>
+    {% if request.user == opinion.creador %}
     <a href="{% url 'EditarOpinion' opinion.id %}">Editar</a><br>
+    {%endif%}
     
 </div>
 {% endblock contenido %}
