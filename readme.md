@@ -15,11 +15,12 @@ Nada tan sencillo como ir a "Peliculas" y ver la lista que figura. Si no hay nin
 Para ello -> click en "Peliculas"--> click en el boton azul "Crear peliculas"
 + Una vez hecho esto, podremos opinar sobre la pelicula.
 Para ello -> desde Inicio, click en "Opinar" o -> click en en boton azul "Opinar" (si estamos en la lista de opiniones en "Ver opiniones" )
-+ Si queremos ver las opiniones vigentes damos click en "Ver Opiniones". En esa seccion podremos ver un titulo de la opinion, una calificacion y la pelicula a la que se refiere el articulo opinion. Podemos ver la opinion en detalle de cada articulo al clickear cada uno de ellos(No es necesario registrarse para aquello)ACLARACION: Solo podremos editar y borrar opiniones si, una vez logueados, hayamos creado esa opinion
++ Si queremos ver las opiniones vigentes damos click en "Ver Opiniones". En esa seccion podremos ver un titulo de la opinion, una calificacion y la pelicula a la que se refiere el articulo opinion. Podemos ver la opinion en detalle de cada articulo al clickear cada uno de ellos(No es necesario registrarse para aquello)ACLARACION: Solo podremos editar y borrar opiniones si, una vez logueados, hayamos creado esa opinion.
 
 
 # Link al video mostrando las funcionalidades de la pagina:
 +  https://www.awesomescreenshot.com/video/19954506?key=241d48a1ca4b0c1d95806cfb5e17a965
++ Sobre el video: Por privacidad no he decidido mostrar la seccion about, pueden probarla tranquilamente clonando el proyecto.
 
 
 
