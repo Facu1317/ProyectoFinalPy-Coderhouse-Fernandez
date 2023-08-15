@@ -18,6 +18,8 @@ DetallePelis
 
     <br>
     <a href="{% url 'ListaPelis' %}">Volver lista</a><br>
+    {% if request.user == pelicula.creador %}
     <a href="{% url 'EditarPelis' object.id %}">Editar</a>
+    {% endif %}
 </div>
 {% endblock contenido %}
